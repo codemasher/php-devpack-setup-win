@@ -56,11 +56,9 @@ runs:
         mv ./${DP_DIR} ./php-dev
 #        ls ./php-dev
 
-    - name: "Move files to workspace and add to $PATH"
+    - name: "Move files to workspace"
       id: "paths"
       shell: powershell
       run: |
         Move-Item -Path .\php-bin -Destination ${{inputs.workspace}}
         Move-Item -Path .\php-dev -Destination ${{inputs.workspace}}
-        echo "${{inputs.workspace}}\php-bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-        echo "${{inputs.workspace}}\php-dev" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
