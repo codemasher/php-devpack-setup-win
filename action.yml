@@ -17,6 +17,9 @@ inputs:
   baseurl:
     description: "The php.net release download base URL"
     required: true
+  workspace:
+    description: "The destination workspace (project GITHUB_WORKSPACE)"
+    required: true
 
 runs:
   using: "composite"
@@ -57,7 +60,7 @@ runs:
       id: "paths"
       shell: powershell
       run: |
-        Move-Item -Path .\php-bin -Destination $Env:GITHUB_WORKSPACE
-        Move-Item -Path .\php-dev -Destination $Env:GITHUB_WORKSPACE
-        echo "$Env:GITHUB_WORKSPACE\php-bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-        echo "$Env:GITHUB_WORKSPACE\php-dev" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        Move-Item -Path .\php-bin -Destination ${{inputs.workspace}}
+        Move-Item -Path .\php-dev -Destination ${{inputs.workspace}}
+        echo "${{inputs.workspace}}\php-bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        echo "${{inputs.workspace}}\php-dev" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
