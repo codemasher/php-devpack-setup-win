@@ -54,7 +54,7 @@ runs:
 #        ls ./php-dev
 
     - name: "Move files to workspace and add to $PATH"
-      id: "devpack"
+      id: "paths"
       shell: powershell
       run: |
         Move-Item -Path .\php-bin -Destination ${GITHUB_WORKSPACE}
