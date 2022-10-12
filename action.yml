@@ -42,7 +42,8 @@ runs:
         PHP_ZIP="php-${{inputs.phpversion}}-${{inputs.tspart}}-${{inputs.vs}}-${{inputs.arch}}.zip"
         curl -LO ${{inputs.baseurl}}/${PHP_ZIP}
         7z x ${PHP_ZIP} -o./php-bin
-#        ls ./php-bin
+        ls
+        ls ./php-bin
 
     - if: steps.cache.outputs.cache-hit != 'true'
       name: "download development pack"
@@ -54,7 +55,7 @@ runs:
         curl -LO ${{inputs.baseurl}}/${DP_ZIP}
         7z x ${DP_ZIP} -o.
         mv ./${DP_DIR} ./php-dev
-#        ls ./php-dev
+        ls ./php-dev
 
 #    - name: "Move files to workspace"
 #      id: "paths"
