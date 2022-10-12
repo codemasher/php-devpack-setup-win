@@ -17,9 +17,6 @@ inputs:
   baseurl:
     description: "The php.net release download base URL"
     required: true
-  workspace:
-    description: "The destination workspace (project GITHUB_WORKSPACE)"
-    required: true
 
 runs:
   using: "composite"
@@ -55,10 +52,3 @@ runs:
         7z x ${DP_ZIP} -o.
         mv ./${DP_DIR} ./php-dev
 #        ls ./php-dev
-
-#    - name: "Move files to workspace"
-#      id: "paths"
-#      shell: powershell
-#      run: |
-#        Move-Item -Path .\php-bin -Destination ${{inputs.workspace}}
-#        Move-Item -Path .\php-dev -Destination ${{inputs.workspace}}
